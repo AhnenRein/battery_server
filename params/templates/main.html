@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Frogetor - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A premium admin dashboard template by themesbrand" name="description" />
+    <meta content="Mannatthemes" name="author" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
+
+    <!-- Clock css -->
+    <link href="/static/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <!-- Plugins css -->
+    <link href="/static/assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="/static/assets/plugins/clockpicker/jquery-clockpicker.min.css" rel="stylesheet" />
+    <link href="/static/assets/plugins/colorpicker/asColorPicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="/static/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="/static/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
+    <!-- App css -->
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="/static/assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+
+    <style id="clock-animations"></style>
+
+
+    <script language="JavaScript">
+        function onlyNumber(obj) {
+            var t = obj.value.charAt(0);
+            obj.value = obj.value.replace(/[^\d\.]/g, '');
+            obj.value = obj.value.replace(/^\./g, '');
+            obj.value = obj.value.replace(/\.{2,}/g, '.');
+            obj.value = obj.value.replace('.', '$#$').replace(/\./g, '').replace('$#$', '.');
+            if (t == '-') {
+                obj.value = '-' + obj.value;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist"
+                                    aria-orientation="vertical">
+                                    <a class="nav-link waves-effect waves-light {% if obj_params.model_type == 'modelA' %}active{% endif %}"
+                                        id="v-pills-home-tab" data-toggle="pill" href="#v-pills-SelectA" role="tab"
+                                        aria-controls="v-pills-SelectA" aria-selected="false"
+                                        onclick="selectModel('modelA')">SelectA</a>
+                                    <a class="nav-link waves-effect waves-light {% if obj_params.model_type == 'modelB' %}active{% endif %}"
+                                        id="v-pills-home-tab" data-toggle="pill" href="#v-pills-SelectB" role="tab"
+                                        aria-controls="v-pills-SelectB" aria-selected="false"
+                                        onclick="selectModel('modelB')">SelectB</a>
+                                    <a class="nav-link waves-effect waves-light {% if obj_params.model_type == 'modelC' %}active{% endif %}"
+                                        id="v-pills-home-tab" data-toggle="pill" href="#v-pills-SelectC" role="tab"
+                                        aria-controls="v-pills-SelectC" aria-selected="false"
+                                        onclick="selectModel('modelC')">SelectC</a>
+                                    <a class="nav-link waves-effect waves-light {% if obj_params.model_type == 'modelD' %}active{% endif %}"
+                                        id="v-pills-home-tab" data-toggle="pill" href="#v-pills-SelectD" role="tab"
+                                        aria-controls="v-pills-SelectD" aria-selected="false"
+                                        onclick="selectModel('modelD')">SelectD</a>
+                                    <a class="nav-link waves-effect waves-light {% if obj_params.model_type == 'modelE' %}active{% endif %}"
+                                        id="v-pills-home-tab" data-toggle="pill" href="#v-pills-SelectE" role="tab"
+                                        aria-controls="v-pills-SelectE" aria-selected="false"
+                                        onclick="selectModel('modelE')">SelectE</a>
+                                    <a class="nav-link waves-effect waves-light {% if obj_params.model_type == 'modelF' %}active{% endif %}"
+                                        id="v-pills-home-tab" data-toggle="pill" href="#v-pills-SelectF" role="tab"
+                                        aria-controls="v-pills-SelectF" aria-selected="false"
+                                        onclick="selectModel('modelF')">SelectF</a>
+                                    <!-- <a class="nav-link waves-effect waves-light {% if obj_params.model_type == 'modelG' %}active{% endif %}"
+                                        id="v-pills-uploadexcel-tab" data-toggle="pill" href="#v-pills-uploadexcel" role="tab"
+                                        aria-controls="v-pills-uploadexcel" aria-selected="false"
+                                        onclick="selectModel('modelF')">UploadExccel</a> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="tab-content mo-mt-2" id="v-pills-tabContent">
+                                    <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel"
+                                        aria-labelledby="v-pills-home-tab">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <form action="/" method="POST">
+                                                            <div class="form-row">
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="validationServer01">电池最大容量(kWh)</label>
+                                                                    <input id='max_bat' type="text" class="form-control"
+                                                                        name="max_bat" placeholder="" required=""
+                                                                        onkeyup="value=value.replace(/[^\d\.]/g,'')"
+                                                                        onblur="value=value.replace(/[^\d\.]/g,'')"
+                                                                        value='{{obj_params.max_bat}}' />
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="validationServer02">电池当前电量(kWh)</label>
+                                                                    <input id='cur_bat' type="text" class="form-control"
+                                                                        name="cur_bat" placeholder="" required=""
+                                                                        onkeyup="value=value.replace(/[^\d\.]/g,'')"
+                                                                        onblur="value=value.replace(/[^\d\.]/g,'')"
+                                                                        value='{{obj_params.cur_bat}}'>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-row">
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="validationServer03">电池充电功率(kw)</label>
+                                                                    <input id='charge_bat' type="text"
+                                                                        class="form-control" name="charge_bat"
+                                                                        placeholder="" required=""
+                                                                        onkeyup="value=value.replace(/[^\d\.]/g,'')"
+                                                                        onblur="value=value.replace(/[^\d\.]/g,'')"
+                                                                        value='{{obj_params.charge_bat}}'>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="validationServer03">电池放电功率(kw)</label>
+                                                                    <input id='run_bat' type="text" class="form-control"
+                                                                        name="run_bat" placeholder="" required=""
+                                                                        onkeyup="value=value.replace(/[^\d\.]/g,'')"
+                                                                        onblur="value=value.replace(/[^\d\.]/g,'')"
+                                                                        value='{{obj_params.run_bat}}'>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-row">
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="validationServer03">供电百分比(%)</label>
+                                                                    <input id='percent_power' type="text"
+                                                                        class="form-control" name="percent_power"
+                                                                        placeholder="" required=""
+                                                                        onkeyup="value=value.replace(/[^\d\.]/g,'')"
+                                                                        onblur="value=value.replace(/[^\d\.]/g,'')"
+                                                                        value='{{obj_params.percent_power}}'>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="validationServer03">缓解变量(%)</label>
+                                                                    <input id='netzentlastang' type="text"
+                                                                        class="form-control" name="netzentlastang"
+                                                                        placeholder="" required=""
+                                                                        onkeyup="value=value.replace(/[^\d\.]/g,'')"
+                                                                        onblur="value=value.replace(/[^\d\.]/g,'')"
+                                                                        value='{{obj_params.netzentlastang}}'>
+                                                                </div>
+
+                                                                
+                                                            </div>
+
+
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <h6 class=" input-title mt-lg-3">充电开始时间</h6>
+                                                                    <div class="input-group clockpicker "
+                                                                        data-placement="bottom" data-align="top"
+                                                                        data-autoclose="true">
+                                                                        <input id='a_laden' name="a_laden" type="text" class="form-control"
+                                                                            value="{{obj_params.a_laden|date:"H:i" }}">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text"><i
+                                                                                    class="far fa-clock"></i></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <h6 class=" input-title mt-lg-3">充电结束时间</h6>
+                                                                    <div class="input-group clockpicker "
+                                                                        data-placement="bottom" data-align="top"
+                                                                        data-autoclose="true">
+                                                                        <input id='e_laden' name="e_laden" type="text" class="form-control"
+                                                                            value="{{obj_params.e_laden|date:"H:i" }}">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text"><i
+                                                                                    class="far fa-clock"></i></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <h6 class=" input-title mt-lg-3">放电开始时间</h6>
+                                                                    <div class="input-group clockpicker "
+                                                                        data-placement="bottom" data-align="top"
+                                                                        data-autoclose="true">
+                                                                        <input id='a_entladen' name="a_entladen" type="text" class="form-control"
+                                                                            value="{{obj_params.a_entladen|date:"H:i" }}">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text"><i
+                                                                                    class="far fa-clock"></i></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <h6 class=" input-title mt-lg-3">放电结束时间</h6>
+                                                                    <div class="input-group clockpicker "
+                                                                        data-placement="bottom" data-align="top"
+                                                                        data-autoclose="true">
+                                                                        <input id='e_entladen' name="e_entladen" type="text" class="form-control"
+                                                                            value="{{obj_params.e_entladen|date:"H:i" }}">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text"><i
+                                                                                    class="far fa-clock"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <button class="btn btn-primary"
+                                                                type="submit">Submit</button>
+                                                            <button class="btn btn-danger" type="button">Cancel</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end row -->
+
+                                    <!-- <div class="tab-pane fade" id="v-pills-uploadexcel" role="tabpanel"
+                                        aria-labelledby="v-pills-uploadexcel-tab"> -->
+
+                                        <form id="form1" enctype="multipart/form-data" action="/uploadexcel"
+                                            method="post">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <input name='myfile' type="file" id="input-file-now-custom-2"
+                                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                        class="dropify" data-height="500" />
+                                                </div>
+                                                <!--end card-body-->
+                                            </div>
+                                            <!--end card-->
+                                            <input type="submit" value="upload" />
+
+                                        </form>
+                                    <!-- </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- end page content -->
+    </div>
+    <!--end page-wrapper-inner -->
+    </div>
+    <!-- end page-wrapper -->
+
+    <!-- jQuery  -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/metisMenu.min.js"></script>
+    <script src="/static/assets/js/waves.min.js"></script>
+    <script src="/static/assets/js/jquery.slimscroll.min.js"></script>
+
+    <!-- Plugins js -->
+    <script src="/static/assets/plugins/moment/moment.js"></script>
+    <script src="/static/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="/static/assets/plugins/timepicker/tempusdominus-bootstrap-4.js"></script>
+    <script src="/static/assets/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+    <script src="/static/assets/plugins/clockpicker/jquery-clockpicker.min.js"></script>
+    <script src="/static/assets/plugins/colorpicker/jquery-asColor.js"></script>
+    <script src="/static/assets/plugins/colorpicker/jquery-asGradient.js"></script>
+    <script src="/static/assets/plugins/colorpicker/jquery-asColorPicker.min.js"></script>
+    <script src="/static/assets/plugins/select2/select2.min.js"></script>
+
+    <script src="/static/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <script src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/static/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="/static/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script>
+
+    <script src="/static/assets/pages/jquery.clock-img.init.js"></script>
+    <script src="/static/assets/pages/jquery.forms-advanced.js"></script>
+
+    <!-- App js -->
+    <script src="/static/assets/js/app.js"></script>
+
+    <script src="/static/assets/plugins/dropify/js/dropify.min.js"></script>
+    <script src="/static/assets/pages/jquery.form-upload.init.js"></script>
+
+    <script>
+        function uploadexcel() {
+            $.ajax({
+                url: "http://127.0.0.1:8000/uploadexcel/",
+                type: "post",
+                cache: false,
+                data: new FormData($('#form1')[0]),
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (res) {
+                    if (res.code == 200) {
+                        alert(res.mes)
+                        window.location.href = "/index/"
+                    } else {
+                        alert(res.mes)
+                    }
+
+                }
+            })
+        }
+    </script>
+
+    <script>
+
+        function dateFormat(fmt, date) {
+            let ret;
+            var dateTime = '2015-03-05 ' + date;
+            dateTime.substring(0, 19);
+            time = new Date(dateTime.replace(/-/g,"/"));
+            const opt = {
+                "Y+": time.getFullYear().toString(),        // 年
+                "m+": (time.getMonth() + 1).toString(),     // 月
+                "d+": time.getDate().toString(),            // 日
+                "H+": time.getHours().toString(),           // 时
+                "M+": time.getMinutes().toString(),         // 分
+                "S+": time.getSeconds().toString()          // 秒
+                // 有其他格式化字符需求可以继续添加，必须转化成字符串
+            };
+            for (let k in opt) {
+                ret = new RegExp("(" + k + ")").exec(fmt);
+                if (ret) {
+                    fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+                };
+            };
+            return fmt;
+        }
+
+        function selectModel(model) {
+            $.ajax({
+                url: "/",
+                type: "POST",
+                data: { "model": model },
+                dataType: "json",
+                success: function (res) {
+                    $('#max_bat').val(res['max_bat'])
+                    $('#cur_bat').val(res['cur_bat'])
+                    $('#charge_bat').val(res['charge_bat'])
+                    $('#run_bat').val(res['run_bat'])
+                    $('#a_laden').val(dateFormat('HH:MM', res['a_laden']))
+                    $('#e_laden').val(dateFormat('HH:MM', res['e_laden']))
+                    $('#a_entladen').val(dateFormat('HH:MM', res['a_entladen']))
+                    $('#e_entladen').val(dateFormat('HH:MM', res['e_entladen']))
+                    $('#percent_power').val(res['percent_power'])
+                    $('#netzentlastang').val(res['netzentlastang'])
+
+                }
+            })
+
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Frogetor - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A premium admin dashboard template by themesbrand" name="description" />
+    <meta content="Mannatthemes" name="author" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
+
+    <!-- App css -->
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist"
+                                    aria-orientation="vertical">
+                                    <a class="nav-link waves-effect waves-light active" id="v-pills-home-tab"
+                                        data-toggle="pill" href="/selectA" role="tab" aria-controls="v-pills-home"
+                                        aria-selected="true" onclick="modelChanged('modelA')">SelectA</a>
+                                    <a class="nav-link waves-effect waves-light" id="v-pills-profile-tab"
+                                        data-toggle="pill" href="#v-pills-profile" role="tab"
+                                        aria-controls="v-pills-profile" aria-selected="false" onclick="modelChanged('modelB')">SelectB</a>
+                                    <a class="nav-link waves-effect waves-light" id="v-pills-settings-tab"
+                                        data-toggle="pill" href="#v-pills-settings" role="tab"
+                                        aria-controls="v-pills-settings" aria-selected="false" onclick="modelChanged('modelC')">SelectC</a>
+                                    <a class="nav-link waves-effect waves-light" id="v-pills-home-tab"
+                                        data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+                                        aria-selected="true" onclick="modelChanged('modelD')">SelectD</a>
+                                    <a class="nav-link waves-effect waves-light" id="v-pills-profile-tab"
+                                        data-toggle="pill" href="#v-pills-profile" role="tab"
+                                        aria-controls="v-pills-profile" aria-selected="false" onclick="modelChanged('modelE')">SelectE</a>
+                                    <a class="nav-link waves-effect waves-light" id="v-pills-settings-tab"
+                                        data-toggle="pill" href="#v-pills-settings" role="tab"
+                                        aria-controls="v-pills-settings" aria-selected="false" onclick="modelChanged('modelF')">SelectF</a>
+                                </div>
+                            </div>
+
+
+
+                            <div class="container-fluid col-sm-9">
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <form class="my-4">
+                                            <div class="row">
+                                                <div class="col-sm-5 mx-auto">
+                                                    <div class="input-group">
+                                                        <select class="form-control js--animations" style="width:auto" onchange="selectExcelClick(this.options[this.options.selectedIndex].value)">
+                                                            <option value={{excel.filename}}></option>
+                                                            {% for excel in excels.all %}
+                                                            <option value={{excel.filename}}>{{excel.filename}}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                        <!--end form-control-->
+                                                    </div>
+                                                    <!--end input group-->
+                                                </div>
+                                                <!--emd col-->
+                                            </div>
+                                            <!--end row-->
+                                        </form>
+                                        <!--end form-->
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="header-title mt-0 mb-4">Line & Area Chart</h4>
+                                                <div class="chart-demo">
+                                                    <div id="apex_mixed3" class="apex-charts"></div>
+                                                </div>                                        
+                                            </div><!--end card-body-->
+                                        </div><!--end card-->
+
+
+                                    </div>
+                                    <!--end col-->
+                                </div>
+                                <!--end row-->
+
+                                <form class="my-4">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationServer03">选择时间</label>
+                                            <div class="input-group">
+                                                <select id='time_select' class="form-control js--animations" style="width:auto" onchange="selectTime(this.options[this.options.selectedIndex].value)">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationServer03">新的电网供电量</label>
+                                            <input id='last_battery' type="text" disabled="disabled" style="background-color:#ffffff;color:#000000"
+                                                class="form-control" name="last_battery"
+                                                placeholder="" required=""
+                                                value=''>
+                                        </div>
+
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationServer03">预计电池可用时间</label>
+                                            <input id='except_battery' type="text" disabled="disabled" style="background-color:#ffffff;color:#000000"
+                                                class="form-control" name="except_battery"
+                                                placeholder="" required=""
+                                                value=''>
+                                        </div>
+
+
+                                    </div>
+                                    
+                                    <!--end row-->
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery  -->
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/metisMenu.min.js"></script>
+    <script src="/static/assets/js/waves.min.js"></script>
+    <script src="/static/assets/js/jquery.slimscroll.min.js"></script>
+
+
+    <script src="/static/assets/plugins/moment/moment.js"></script>
+
+    <script src="/static/assets/plugins/apexcharts/apexcharts.min.js"></script>
+    <script src="https://apexcharts.com/samples/assets/irregular-data-series.js"></script>
+    <script src="https://apexcharts.com/samples/assets/ohlc.js"></script>
+    <script src="/static/assets/pages/jquery.apexcharts.init.js"></script>
+
+    <!-- App js -->
+    <script src="/static/assets/js/app.js"></script>
+
+    <script>
+        function buttonClick(btn) {
+            $.ajax({
+                type: "GET",
+                url: "chart",
+                data: {
+                    'func': 'buttonClick',
+                    'btn': btn,
+                },
+                dataType: "json",
+                success: function (datas) {
+                    data = datas['data_array']
+                    document.getElementById(data['btn']).style.backgroundColor = data['status'] ? 'red' : 'blue';
+                }
+            });
+        }
+
+        function selectTime(time) {
+            $.ajax({
+                type: "GET",
+                url: "chart",
+                data: {
+                    'func': 'selectTime',
+                    'time': time,
+                },
+                dataType: "json",
+                success: function (datas) {
+                    $('#last_battery').val(datas['data_array']['last_battery']);
+                    $('#except_battery').val(datas['data_array']['except_battery']);
+
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
