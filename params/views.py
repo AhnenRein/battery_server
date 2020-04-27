@@ -173,6 +173,11 @@ def uploadExcel(request):
         if not myFile:
             return HttpResponse("no file for upload")
 
+        # 检查表格是否已存在，如果存在则禁止
+        excels = ExcelFile.objects.filter(filename = myFile.name)
+        if(len(excels) != 0):
+            return HttpResponse("excel already exist!")
+
         excelf = open(os.path.join(MEDIA_ROOT + '/excels/'+myFile.name), 'wb+')
 
         print('file name: ' + myFile.name)

@@ -199,7 +199,7 @@ def modelA(table, cur_model):
     last_alt = array_last_alt.tolist()
 
     for alt, c_t in zip(last_alt, time_array):
-        c_time = datetime.datetime.strptime(c_t,'%H:%M:%S').time()
+        c_time = datetime.strptime(c_t,'%H:%M:%S').time()
 
         # last_bat[c_t] = 
         # except_bat[c_t] = 
@@ -334,7 +334,7 @@ def modelB(table, cur_model):
     r_soc = 0
     for alt, c_t in zip(last_alt, time_array[1:]):
 
-        c_time = datetime.datetime.strptime(c_t,'%H:%M:%S').time()
+        c_time = datetime.strptime(c_t,'%H:%M:%S').time()
 
         if alt > 0: # last_alt大于0的情况
 
@@ -568,7 +568,7 @@ def modelD(table, cur_model):
 
     r_soc = 0
     for alt, c_t in zip(last_alt, time_array[1:]):
-        c_time = datetime.datetime.strptime(c_t,'%H:%M:%S').time()
+        c_time = datetime.strptime(c_t,'%H:%M:%S').time()
 
         if alt > 0:
             if c_time >= a_entladen and e_entladen >= c_time:
@@ -699,7 +699,7 @@ def modelE(table, cur_model):
 
     r_soc = 0
     for alt, c_t in zip(last_alt, time_array[1:]):
-        c_time = datetime.datetime.strptime(c_t,'%H:%M:%S').time()
+        c_time = datetime.strptime(c_t,'%H:%M:%S').time()
         if alt > 0: # last_alt大于0的情况
 
             if c_time >= a_entladen and e_entladen >= c_time:
@@ -826,7 +826,7 @@ def modelF(table, cur_model):
 
     r_soc = 0
     for alt, c_t in zip(last_alt, time_array[1:]):
-        c_time = datetime.datetime.strptime(c_t,'%H:%M:%S').time()
+        c_time = datetime.strptime(c_t,'%H:%M:%S').time()
 
         if alt > 0:
             if kap_alt == 0: # 当前电池电量为零的情况
